@@ -34,6 +34,8 @@ class Transaction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer_name = db.Column(db.String, nullable=False)
     total_amount = db.Column(db.Float, nullable=False)
+    service_type = db.Column(db.String, nullable=False, default='pickup')
+    payment_method = db.Column(db.String, nullable=False, default='cash')
     status = db.Column(db.String, nullable=False)  # e.g., 'Completed', 'Pending', 'Cancelled'
     
     orders = db.relationship('Order', back_populates='transaction')

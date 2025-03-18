@@ -8,6 +8,9 @@ bp = Blueprint('transaction', __name__)
 def create_order():
     data = request.get_json()
     customer_name = data.get('customer_name')
+    payment_method = data.get('payment_method')
+    service_type = data.get('service_type')
+
     items = data.get('items')
 
     if not customer_name or not items:
@@ -33,6 +36,8 @@ def create_order():
     transaction = Transaction(
         customer_name=customer_name,
         total_amount=total_amount,
+        service_type=service_type,
+        payment_method=payment_method,
         status='Pending'
     )
     db.session.add(transaction)

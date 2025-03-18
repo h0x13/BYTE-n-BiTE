@@ -1,4 +1,4 @@
-const API_URL = 'http://127.0.0.1:5000';
+const API_URL = 'https://0x13.pythonanywhere.com';
 
 document.addEventListener('DOMContentLoaded', function () {
     const foodMenuSection = document.querySelector('.food-menu');
