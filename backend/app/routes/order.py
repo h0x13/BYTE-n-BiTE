@@ -38,7 +38,7 @@ def create_order():
         total_amount=total_amount,
         service_type=service_type,
         payment_method=payment_method,
-        status='Pending'
+        status='Receive'
     )
     db.session.add(transaction)
     db.session.commit()
@@ -53,9 +53,11 @@ def create_order():
 
         if food_item:
             item_type = 'Food'
+            item_name = food_item.name
             item_id = food_item.id  # Use the ID from the Food table
         elif drink_item:
             item_type = 'Drink'
+            item_name = drink_item.name
             item_id = drink_item.id  # Use the ID from the Drink table
         else:
             # If the item is neither Food nor Drink, skip it or handle the error
@@ -63,7 +65,7 @@ def create_order():
 
         order = Order(
             item_id=item_id,  # Use the ID from the corresponding table
-            item_type=item_type,  # Set the correct item type
+            item_type=item_name,  # Set the correct item type
             quantity=item_data['quantity'],
             price=item_data['price'],
             transaction_id=transaction.id

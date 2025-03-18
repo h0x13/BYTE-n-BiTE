@@ -252,6 +252,7 @@ document.getElementById('clearCart')?.addEventListener('click', () => {
 // Handle payment and delivery options
 document.addEventListener("DOMContentLoaded", function () {
     fetchMenu();
+    const customerName = document.getElementById("customer-name");
     const paymentMethod = document.getElementById("payment-method");
     const gcashDetails = document.getElementById("gcash-details");
     const pickupDelivery = document.getElementById("pickup-delivery");
@@ -289,7 +290,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                customer_name: 'Unknown',
+                customer_name: customerName,
                 items: cart,
                 payment_method: paymentMethod.value,
                 service_type: pickupDelivery.value,
